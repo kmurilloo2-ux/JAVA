@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAFETERIA 🇨🇴</title>
+</head>
+<body>
+    <table style="margin: auto; border: 2px solid black; border-radius: 10px; background-color: #f4f4f4; box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; width: 50%;">
+        <thead>
+            <tr>
+                <th colspan="4" style="background-color: #73c54d; color: white;">Tierra Cafetera 🇨🇴</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Café americano $2.00</td>
+                <td><button onclick="agregarPedido('Café americano', 2.00)">Agregar Pedido</button></td>
+            </tr>
+            <tr>
+                <td>Cappuccino $3.00</td>
+                <td><button onclick="agregarPedido('Cappuccino', 3.00)">Agregar Pedido</button></td>
+            </tr>
+            <tr>
+                <td>Sánduche de pollo $4.00</td>
+                <td><button onclick="agregarPedido('Sánduche de pollo', 4.00)">Agregar Pedido</button></td>
+            </tr>
+            <tr>
+                <td>Cheesecake $3.50</td>
+                <td><button onclick="agregarPedido('Cheesecake', 3.50)">Agregar Pedido</button></td>
+            </tr>
+            <tr>
+                <td>Jugo natural $2.50</td>
+                <td><button onclick="agregarPedido('Jugo natural', 2.50)">Agregar Pedido</button></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button onclick="calcularTotal()">Costear Pedido</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span id="total">Total: $0.00</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="listaPedidos" style="text-align: center; margin-top: 15px; font-family: Arial, sans-serif;"></div>
+    <div id="resumen" style="text-align: center; margin-top: 10px; font-family: Arial, sans-serif;"></div>
+
+    <script>
+        // Vector para almacenar los pedidos
+        let pedidos = [];
+
+        // Función para agregar productos al vector
+        function agregarPedido(nombre, precio) {
+            pedidos.push({ nombre, precio });
+            mostrarPedidos();
+        }
+
+        // Mostrar todos los pedidos en pantalla
+        function mostrarPedidos() {
+            let lista = "<h3>Pedidos realizados:</h3><ul style='list-style:none; padding:0;'>";
+            for (let i = 0; i < pedidos.length; i++) {
+                lista += "<li>" + pedidos[i].nombre + " - $" + pedidos[i].precio.toFixed(2) + "</li>";
+            }
+            lista += "</ul>";
+            document.getElementById("listaPedidos").innerHTML = lista;
+        }
+
+        // Calcular el total, cantidad y producto más pedido
+        function calcularTotal() {
+            if (pedidos.length === 0) {
+                alert("No se han agregado pedidos.");
+                return;
+            }
+
+            let total = 0;
+            let contadorProductos = {};
+
+            // Recorre el vector con un ciclo
+            for (let i = 0; i < pedidos.length; i++) {
+                total += pedidos[i].precio;
+
+                // Contar cuántas veces se pidió cada producto
+                let nombre = pedidos[i].nombre;
+                if (contadorProductos[nombre]) {
+                    contadorProductos[nombre]++;
+                } else {
+                    contadorProductos[nombre] = 1;
+                }
+            }
+
+            // Calcular producto más pedido
+            let productoMasPedido = "";
+            let maxPedidos = 0;
+            for (let producto in contadorProductos) {
+                if (contadorProductos[producto] > maxPedidos) {
+                    maxPedidos = contadorProductos[producto];
+                    productoMasPedido = producto;
+                }
+            }
+
+            // Mostrar total, cantidad de productos y el más pedido
+            document.getElementById("total").textContent = "Total: $" + total.toFixed(2);
+
+            document.getElementById("resumen").innerHTML = `
+                <p><strong>Cantidad total de productos:</strong> ${pedidos.length}</p>
+                <p><strong>Producto más pedido:</strong> ${productoMasPedido}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
