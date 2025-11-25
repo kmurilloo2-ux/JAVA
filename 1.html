@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+    <script>
+        const TOPE=10;
+        const NUM_MAXIMO=100;
+        let vector=[];
+        
+        function fncargarvector(){
+         for( let i=0; i<TOPE; i++){
+            const numero =Math.ceil(Math.random()*NUM_MAXIMO);
+            vector [i]=numero;
+         }
+        }
+          function fnmulvector(){
+            let procesados=[];
+            for(let i=0; i<vector.length; i++){
+                let n= vector[i];
+                if(n % 2==0){
+                procesados [i]=n*-2;
+                }
+                else{ 
+                    procesados[i]=n*-1;
+
+                }
+        
+            }
+            return procesados;
+          }
+          fncargarvector();
+          console.log("VECTOR ORIGINAL", vector);
+          let ressultado=fnmulvector();
+          console.log("PROCESADO", ressultado );
+</script>
+</html>

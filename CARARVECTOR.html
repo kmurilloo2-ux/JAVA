@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        const TOPE=20;
+        const NUM_MAXIMO=50;
+        let vector=[];
+
+        function fncargarvector(){
+            for(let i=0; i<TOPE; i++){
+                const numero= Math.ceil(Math.random()* NUM_MAXIMO);
+                vector[i]= numero;
+            }
+        }
+        fncargarvector();
+        console.log("ORIGINAL", vector)
+
+    </script>
+</html>

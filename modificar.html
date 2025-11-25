@@ -1,0 +1,21 @@
+<html>
+    <script>
+        let vector = [];
+        let modificado = [];
+
+       for (let i = 0; i < 12; i++) {
+       vector[i] = Math.ceil(Math.random() * 100);
+       }
+
+        for (let i = 0; i < 12; i++) {
+         if (vector[i] % 2 === 1) {
+        modificado[i] = 0;
+         }     else {
+        modificado[i] = vector[i];
+    }
+}
+
+console.log("Vector original:", vector);
+console.log("Vector modificado:", modificado);
+    </script>
+</html>

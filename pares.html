@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        const TOPE=15;
+        let vector=[];
+        let pares=0;
+        let conpar=[];
+
+        function fncargarvector(){
+            for(let i=0; i<TOPE; i++){
+                const numero=Math.ceil(Math.random()*100);
+                vector[i]= numero;
+            }
+            for(let i=0; i<vector.length; i++){
+                if( vector[i]%2==0){
+                    pares++;
+                }
+            }
+            for(let i=0;i<vector.length; i++){
+                if(vector[i]%2==0){
+                    conpar.push(vector[i]);
+                }
+            }
+    
+        }
+        fncargarvector();
+ console.log("ORIGINAL", vector)
+ console.log("PARES", pares)
+  console.log("PARES encontrados", conpar)
+    </script>
+
+</html>

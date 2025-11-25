@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let vector = [];
+        const TOPE = 12;
+     for (let i = 0; i < TOPE; i++) {
+     vector[i] = Math.ceil(Math.random() * 300);
+     }
+
+     let mayor = vector[0];
+
+     for (let i = 1; i < vector.length; i++) {
+     if (vector[i] > mayor) {
+        mayor = vector[i];
+     }
+}
+
+console.log("Vector:", vector);
+console.log("Número mayor:", mayor);
+
+     </script>
+</html>
